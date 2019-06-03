@@ -19,7 +19,7 @@ export function useScreenDimensions(): { width: number; height: number } {
       setHeight(screen.height);
     };
 
-    // Listen for dimension changes, which typically indicate a rotation
+    // Listen for dimension changes, which typically indicates a rotation
     Dimensions.addEventListener("change", handleChange);
 
     // Cleanup
