@@ -6,7 +6,7 @@ import { RotationHint } from "./RotationHint";
 import { useBreakpoint } from "../hooks/useBreakpoint";
 
 // Table header items
-export const head = [
+const head = [
   "Ticker",
   "Quantity",
   "Avg. Cost",
@@ -16,7 +16,7 @@ export const head = [
 ];
 
 // Table data rows
-export const data = [
+const data = [
   ["ADBE", "4", "$270.45", "$1,081.80", "$278.25", "$1,113.00"],
   ["AAPL", "9", "$180.18", "$1,621.62", "$178.35", "$1,605.15"],
   ["GOOGL", "3", "$1,023.58", "$3,070.74", "$1,119.94", "$3,359.82"],
