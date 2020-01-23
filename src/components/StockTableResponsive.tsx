@@ -25,8 +25,8 @@ const data = processData([
 ]);
 
 // Right aligns any "price" element in the dataset
-function processData(data: Array<string[]>): Array<any[]> {
-  function rightAlignPrices(stockEntry: string[]): any[] {
+function processData(data: Array<Array<string>>): Array<Array<string | Element>> {
+  function rightAlignPrices(stockEntry: Array<string>): Array<string | Element> {
     return stockEntry.map(entryElement => {
       if (entryElement.startsWith("$")) {
         // Wrap the string in a right-aligned text component
