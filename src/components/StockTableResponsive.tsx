@@ -1,6 +1,6 @@
 import React from "react";
 import { Table, Row } from "react-native-table-component";
-import { StyleSheet } from "react-native";
+import { StyleSheet, Text } from "react-native";
 import { reduceDataForScreenSize } from "../responsive/reduceDataForScreenSize";
 import { RotationHint } from "./RotationHint";
 import { useBreakpoint } from "../hooks/useBreakpoint";
@@ -16,13 +16,39 @@ const head = [
 ];
 
 // Table data rows
-const data = [
+const data = processData([
   ["ADBE", "4", "$270.45", "$1,081.80", "$278.25", "$1,113.00"],
   ["AAPL", "9", "$180.18", "$1,621.62", "$178.35", "$1,605.15"],
   ["GOOGL", "3", "$1,023.58", "$3,070.74", "$1,119.94", "$3,359.82"],
   ["AIR", "10", "$113.12", "$1,131.20", "$116.64", "$1,166.40"],
   ["MSFT", "6", "$129.89", "$779.34", "$126.18", "$757.08"]
-];
+]);
+
+// Right aligns any "price" element in the dataset
+function processData(data: Array<string[]>): Array<any[]> {
+  function rightAlignPrices(stockEntry: string[]): any[] {
+    return stockEntry.map(entryElement => {
+      if (entryElement.startsWith("$")) {
+        // Wrap the string in a right-aligned text component
+        return (
+          <Text
+            style={{
+              textAlign: "right",
+              paddingRight: 4
+            }}
+          >
+            {entryElement}
+          </Text>
+        );
+      } else {
+        // Return the string as-is
+        return entryElement;
+      }
+    });
+  }
+
+  return data.map(rightAlignPrices);
+}
 
 // Indices (columns) to include on a small screen
 export const smallScreenIndices = [0, 1, 5];
